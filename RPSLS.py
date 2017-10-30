@@ -19,6 +19,9 @@ def game():
         symbol = "lizard"
     elif player in ("Spock", "spock"):
         symbol = "scissors"
+    else:
+        print("Not a valid option.")
+        game()
 
     print ("Computer is choosing...")
     computer = (random.randint(1, 5))
@@ -57,7 +60,7 @@ def game():
         print ("Player wins!")
         points = points + 1
         game()
-    elif symbol == cysmbol:
+    elif symbol == csymbol:
         print ("Player and Computer tie!")
         game()
     else:
