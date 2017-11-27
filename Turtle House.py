@@ -40,11 +40,11 @@ def house():
     house.right(90)
     house.forward(300)
     house.pendown()
-    house.right(90)
     house.begin_fill()
-    house.forward(50)
-    house.right(90)
-    house.forward(50)
+    house.circle(50)
+    house.end_fill()
+    while True():
+        fbt = 0
 
 
 groundfill()
