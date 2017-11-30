@@ -2,7 +2,31 @@ from tkinter import *
 import time
 import random
 
+def diceroll():
+    global roll
+    global result
+    result = random.randrange(1,6)
+    playerone()
 
+def playerone():
+    global roll
+    global result
+    global pointz
+    global pointsA
+    global pointsB
+    global game
+    roll.config(text = result)
+    if result == 1:
+        pointsA = 0
+        playertwo()
+    elif result != 1:
+        pointsA = pointsA + result
+    humanplay()
+        
+    
+    
+    
+    
 
 def engage():
     engage = Toplevel()
@@ -15,11 +39,36 @@ def engage():
     
     def humanplay():
         global pointz
+        global pointsA
+        global pointsB
+        global roll
+        pointsA = 0
+        pointsB = 0
         pointz = pointreq.get()
         global game
         game = Toplevel()
         game.title("Pig Game")
-        game.configure(background='grey')
+        roll = Label(game)
+        res = Label(game, text="You Rolled A:")
+        pointzA = Label(game, text="Player One Points:")
+        pointzA.grid(row=2, column=1)
+        pointzB = Label(game, text="Player Two Points:")
+        pointzB.grid(row=3, column=1)
+        reqpoi = Label(game, text = "Points To Win:")
+        reqpoi.grid(row=4, column = 1)
+        pointzAA = Label(game, text=pointsA)
+        pointzAA.grid(row=2, column=2)
+        pointzBB = Label(game, text=pointsB)
+        pointzBB.grid(row=3, column=2)
+        reqpoz = Label(game, text=pointz)
+        reqpoz.grid(row=4, column=2)
+        
+        res.grid(row=1, column=2)
+        roller = Button(game, text = "Click To Roll:", width=30, command=diceroll)
+        roller.grid(row=1, column=1)
+        roll.grid(row=1, column=3)
+        
+        
         
 
         
