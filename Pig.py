@@ -2,26 +2,7 @@ from tkinter import *
 import time
 import random
 
-def diceroll():
-    global roll
-    global result
-    result = random.randrange(1,6)
-    playerone()
 
-def playerone():
-    global roll
-    global result
-    global pointz
-    global pointsA
-    global pointsB
-    global game
-    roll.config(text = result)
-    if result == 1:
-        pointsA = 0
-        playertwo()
-    elif result != 1:
-        pointsA = pointsA + result
-    humanplay()
         
     
     
@@ -36,20 +17,73 @@ def engage():
     pointreq = Entry(engage, width = 5)
     pointreq.insert(0, 50)
     pointreq.grid(row=1, column=2)
-    
-    def humanplay():
+
+    def playerswap():
+        global swap
+        if swap == "one":
+            swap = "two"
+        elif swap == "two":
+            swap = "one"
+        update()
+    def diceroll():
+        global roll
+        global result
+        global swap
+        result = random.randrange(1,6)
+        if swap == "one":
+            playerone()
+        elif swap == "two":
+            playertwo()
+
+    def playerone():
+        global roll
+        global result
         global pointz
         global pointsA
         global pointsB
-        global roll
-        pointsA = 0
-        pointsB = 0
-        pointz = pointreq.get()
         global game
-        game = Toplevel()
-        game.title("Pig Game")
-        roll = Label(game)
-        res = Label(game, text="You Rolled A:")
+        roll.config(text = result)
+        if result == 1:
+            pointsA = pointsA + 0
+            playerswap()
+        elif result != 1:
+            pointsA = pointsA + result
+            update()
+    def playertwo():
+        global roll
+        global result
+        global pointz
+        global pointsA
+        global pointsB
+        global game
+        roll.config(text = result)
+        if result == 1:
+            pointsB = pointsB + 0
+            playerswap()
+        elif result != 1:
+            pointsB = pointsB + result
+            update()
+
+    def update():
+        global pointz
+        global swap
+        global pointsA
+        global pointsB
+        global roll
+        global game
+        if pointsA >= pointz:
+            game.destroy()
+            onewin = Toplevel()
+            owin = Label(onewin, text = "PLAYER ONE WINS!")
+            owin.grid(row=1)
+        elif pointsB >= pointz:
+            game.destroy()
+            twowin = Toplevel()
+            twin = Label(twowin, text = "PLAYER TWO WINS!")
+            twin.grid(row=1)
+        
+        #roll = Label(game)
+        #res = Label(game, text="You Rolled:")
         pointzA = Label(game, text="Player One Points:")
         pointzA.grid(row=2, column=1)
         pointzB = Label(game, text="Player Two Points:")
@@ -62,6 +96,49 @@ def engage():
         pointzBB.grid(row=3, column=2)
         reqpoz = Label(game, text=pointz)
         reqpoz.grid(row=4, column=2)
+        curr = Label(game, text = swap)
+        curr.grid(row=6, column=2)
+        
+        #res.grid(row=1, column=2)
+        roller = Button(game, text = "Click To Roll:", width=30, command=diceroll)
+        roller.grid(row=1, column=1)
+        roll.grid(row=1, column=4)
+    
+    def humanplay():
+        global pointz
+        global pointsA
+        global pointsB
+        global swap
+        global roll
+        swap = "one"
+        pointsA = 0
+        pointsB = 0
+        pointz = pointreq.get()
+        pointz = int(pointz)
+        global game
+        game = Toplevel()
+        game.title("Pig Game")
+        roll = Label(game)
+        res = Label(game, text="You Rolled A:")
+        readyplayer = Button(game, text="End Turn", width = 30, command = playerswap)
+        readyplayer.grid(row=5, column=1)
+        pointzA = Label(game, text="Player One Points:")
+        pointzA.grid(row=2, column=1)
+        pointzB = Label(game, text="Player Two Points:")
+        pointzB.grid(row=3, column=1)
+        reqpoi = Label(game, text = "Points To Win:")
+        reqpoi.grid(row=4, column = 1)
+        curryplayer = Label(game, text = "Current Player:")
+        curryplayer.grid(row=6, column=1)
+        curr = Label(game, text = swap)
+        curr.grid(row=6, column=2)
+        pointzAA = Label(game, text=pointsA)
+        pointzAA.grid(row=2, column=2)
+        pointzBB = Label(game, text=pointsB)
+        pointzBB.grid(row=3, column=2)
+        reqpoz = Label(game, text=pointz)
+        reqpoz.grid(row=4, column=2)
+        
         
         res.grid(row=1, column=2)
         roller = Button(game, text = "Click To Roll:", width=30, command=diceroll)
@@ -75,8 +152,6 @@ def engage():
         
     human = Button(engage, text = "Play Against Another Human", width = 30, command = humanplay)
     human.grid(row=2, column = 1)
-    ai = Button(engage, text = "Play Against An AI (Unavailable)", width = 30)
-    ai.grid(row=2, column = 2)
     pointreq.focus_set()
 
 
