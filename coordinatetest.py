@@ -1,12 +1,11 @@
 import random
-print ("Making dem coords")
-radius = 200
-rangeX = (0, 2500)
-rangeY = (0, 2500)
-qty = 100  # or however many points you want
+radius = 5
+rangeX = (0, 100)
+rangeY = (0, 100)
+qty = 50  # or however many points you want
 
-# Generate a set of all points within 200 of the origin, to be used as offsets later
-# There's probably a more efficient way to do this.
+# Generate a set of all points within 200 of the origin, to be used as offsets
+# later
 deltas = set()
 for x in range(-radius, radius+1):
     for y in range(-radius, radius+1):

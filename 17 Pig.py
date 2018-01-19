@@ -29,10 +29,14 @@ def engage():
         global roll
         global result
         global swap
+        global recievedA
+        global recievedB
         result = random.randrange(1,6)
         if swap == "one":
+            recievedA = 0
             playerone()
         elif swap == "two":
+            recievedB = 0
             playertwo()
 
     def playerone():
@@ -41,13 +45,15 @@ def engage():
         global pointz
         global pointsA
         global pointsB
+        global recievedA
         global game
         roll.config(text = result)
         if result == 1:
-            pointsA = pointsA + 0
+            pointsA = pointsA - recievedA
             playerswap()
         elif result != 1:
             pointsA = pointsA + result
+            recievedA = recievedA + result
             update()
     def playertwo():
         global roll
@@ -55,13 +61,15 @@ def engage():
         global pointz
         global pointsA
         global pointsB
+        global recievedB
         global game
         roll.config(text = result)
         if result == 1:
-            pointsB = pointsB + 0
+            pointsB = pointsB - recievedB
             playerswap()
         elif result != 1:
             pointsB = pointsB + result
+            recievedB = recievedB + result
             update()
 
     def update():

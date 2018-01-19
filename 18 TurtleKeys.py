@@ -3,6 +3,7 @@ setup(500, 500)
 Screen()
 title("Turtle Keys")
 move = Turtle()
+move2 = Turtle()
 showturtle()
 
 def k1():
@@ -17,11 +18,27 @@ def k3():
 def k4():
     move.back(45)
 
+def l1():
+    move.forward(45)
+
+def l2():
+    move.left(45)
+
+def l3():
+    move.right(45)
+
+def l4():
+    move.back(45)
 
 onkey(k1, "Up")
 onkey(k2, "Left")
 onkey(k3, "Right")
 onkey(k4, "Down")
+
+onkey(l1, "Alt_L")
+onkey(l2, "Alt_R")
+onkey(l3, "Control_L")
+onkey(l4, "Control_R")
 
 listen()
 mainloop()
