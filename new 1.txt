@@ -1,0 +1,13 @@
+What are your memorable experiences with school computers/IT staff?
+
+I'll start!
+
+In Elementary (Primary for people not in the US) school, I don't remember much about the IT staff for the first few years. Cue third grade, and some kids (me + the select few others that could use a computer for longer than five minutes without breaking it) started to realize just how incompetent and useless the IT staff was. The district had upgraded to Windows 7 over the summer, and we were the ones fixing everyone's problems while IT did nothing. A full list of everything we found wrong for the rest of Elementary:
+
+* 75% of the computers used for ISTEP testing (by the 4th and 5th graders) had non-genuine versions of Windows installed, and the hourly popup would force-shut tests.
+* There was zero Internet monitoring and everyone was an admin. (fun times with this one)
+* The IT manual (left on a table in the lunchroom) was 95% instructions on installing and managing standardized test software. The other 5% was a "have you tried turning it off and on again" tech support flowchart.
+* Everyone had the same password (that you couldn't change) through 5th grade. Not a problem among 1st-3rd graders, but in 4th-5th, tons of kids got their work deleted by untraceable pranksters. Fortunately that time for us was the rise of Google products (Chrome was becoming mainstream), so smart kids stored their stuff on an ultra-secure personal Google account.
+* The school provided Google accounts, but any Chrome browser logged into it would download spyware extensions *with keyloggers, browsing reporters, and remote view at the whim of any teacher, onto school and personal computers alike.* This actually got some heat from parents.
+
+In Middle (Secondary outside the US) school, the computers were much better, but the IT staff was bordering on Big Brother levels of control. Agressive spyware on every computer, a website blacklist that filled 5GB of .txt file, assuming anyone doing any actual programming, even if it was just Inspect Element, was some sort of super hacker, the list goes on and on.
