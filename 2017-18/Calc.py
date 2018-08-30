@@ -3,9 +3,11 @@ import sys
 import time
 from pygame import mixer
 
+"""
 mixer.init()
 mixer.music.load('C:/Users/jhaywood/Desktop/James Python Projects/boot.mp3')
 mixer.music.play()
+"""
 
 os.system('color a') 
 boot1 = "Calculator AI Boot Sequence Intiated. (C) Stuffsoft 1985"

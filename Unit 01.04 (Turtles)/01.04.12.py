@@ -2,7 +2,7 @@ from turtle import *
 from random import randint
 
 speed(0)
-bgcolor('black')
+bgcolor("black")
 x = 1
 
 while x < 400:
