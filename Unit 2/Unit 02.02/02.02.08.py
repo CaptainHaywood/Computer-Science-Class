@@ -1,26 +1,48 @@
 import turtle
-
-turtle.color("blue")
 turtle.speed(0)
-num = 50
 
-for i in range(350):
-    turtle.forward(num)
-    turtle.right(47)
-    num = num + 1
-
-turtle.color("red")
-
-for i in range(350):
-    turtle.backward(num)
-    turtle.left(47)
-    num = num - 1
-
-turtle.left(90)
+turtle.bgcolor("lightblue")
+turtle.penup()
+turtle.backward(500)
+turtle.right(90)
 turtle.forward(250)
-turtle.color("green")
+turtle.left(90)
+turtle.pendown()
+turtle.pencolor("gray")
+turtle.fillcolor("gray")
+turtle.begin_fill()
 
-for i in range (350):
-  turtle.forward(num)
-  turtle.right(47)
-  num = num + 1
+turtle.forward(1000)
+turtle.right(90)
+turtle.forward(250)
+turtle.right(90)
+turtle.forward(1000)
+turtle.right(90)
+turtle.forward(250)
+turtle.end_fill()
+
+turtle.pencolor("brown")
+turtle.fillcolor("brown")
+turtle.begin_fill()
+turtle.forward(100)
+turtle.right(90)
+turtle.forward(200)
+turtle.right(90)
+turtle.forward(50)
+turtle.right(90)
+turtle.forward(10)
+turtle.right(90)
+turtle.forward(400)
+turtle.right(90)
+turtle.forward(150)
+turtle.right(90)
+turtle.forward(300)
+turtle.right(90)
+turtle.forward(25)
+turtle.right(90)
+turtle.forward(150)
+turtle.right(90)
+turtle.forward(200)
+turtle.right(90)
+turtle.forward(300)
+turtle.end_fill()

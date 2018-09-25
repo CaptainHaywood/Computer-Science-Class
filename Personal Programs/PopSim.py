@@ -7,8 +7,7 @@ def mainmenu():
     print("PopSim")
     print("1 Basic Simulation")
     print("2 Advanced Simulation")
-    print("3 Complex Simulation")
-    print("4 Help")
+    print("3 Help")
     mainmenu = input("> ")
     if mainmenu == "1":
         basicsim()
