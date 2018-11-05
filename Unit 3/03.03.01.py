@@ -24,4 +24,6 @@ area = area_of_circle(radiusD)
 totalArea = totalArea +  area
 area = area_of_circle(radiusE)
 totalArea = totalArea +  area
-print(area)
+totalArea = round(totalArea, 2)
+
+print(totalArea)
