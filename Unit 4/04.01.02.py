@@ -1,3 +1,3 @@
 import webbrowser
 
-webbrowser.open("http://www.neuroproductions.be/logic-lab/index.php?id=96999")
+webbrowser.open("http://www.neuroproductions.be/logic-lab/index.php?id=97625")
