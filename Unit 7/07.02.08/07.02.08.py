@@ -67,7 +67,7 @@ def hangman(dictionary, maxLives):
     #choose a random word from the dictionary hangman()
     # was started with
     word = random.choice(dictionary)
-    print(word)
+    #print(word)
     #determine wordlength
     wordlen = len(word)
     # initialize other variables
