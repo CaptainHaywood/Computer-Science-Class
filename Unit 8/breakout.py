@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+import random
 pygame.init()
 
 # --- Your Functions Here
@@ -57,9 +58,13 @@ for i in range(10):
     COLOR_LIST.append(WHITE)
 
 
+SOPH_LIST = COLOR_LIST
+
+
 # --- Your Variables Here
 paddle = pygame.Rect(PADDLE_X, PADDLE_Y, PADDLE_WIDTH, PADDLE_HEIGHT)
 ball = pygame.Rect(250, 30, BALL_WIDTH, BALL_HEIGHT)
+missile = pygame.Rect(250, -30, 10, BALL_WIDTH)
 paddleSpeed = 0
 ballXSpeed = 5
 ballYSpeed = 5
@@ -70,6 +75,9 @@ gameOver = False
 score = 0
 lives = 3
 level = 1
+timer = 0
+mtimer = 0
+alreadyhit = []
 helpFont = pygame.font.SysFont('Calibri', 14, True, False)
 font = pygame.font.SysFont('Calibri', 25, True, False)
 failFont = pygame.font.SysFont('Calibri', 75, True, False)
@@ -81,7 +89,11 @@ slowBall = False
 godMode = False
 tryhardMode = False
 widePaddle = False
-megaBall = False
+tinyPaddle = False
+sophMode = False
+ballShape = 1
+go = False
+pause = False
 
 
 
@@ -93,6 +105,7 @@ pygame.display.set_caption("Breakout")
 done = False
 clock = pygame.time.Clock()
 
+ballc = pygame.draw.circle(screen, WHITE, (250,30), 10)
 # --- Main Game Loop
 while not done:
     
@@ -101,44 +114,96 @@ while not done:
         if event.type == pygame.QUIT: # If user clicked close
             done = True # we are done so we exit this loop
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT and pause != True:
                 paddleSpeed = 7
                 paddle = paddle.move(paddleSpeed, 0)
-            elif event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_LEFT and pause != True:
                 paddleSpeed = -7
                 paddle = paddle.move(paddleSpeed, 0)
-            elif event.key == pygame.K_r and gameOver == True:
+            elif event.key == pygame.K_r:
+                firstColl = False
                 blockList = getListOf10Blocks(0, COLOR_LIST)
                 score = 0
                 lives = 3
-                level = 0
+                level = 1
                 gameSpeed = 60
                 ballXSpeed = 5
                 ballYSpeed = 5
                 ball = pygame.Rect(250, 30, BALL_WIDTH, BALL_HEIGHT)
                 gameOver = False
-            elif event.key == pygame.K_p:
+            elif event.key == pygame.K_1:
                 blockPhysics = not blockPhysics
-            elif event.key == pygame.K_s:
+            elif event.key == pygame.K_2:
                 slowBall = not slowBall
-            elif event.key == pygame.K_g:
+            elif event.key == pygame.K_3:
                 godMode = not godMode
-            elif event.key == pygame.K_t:
+            elif event.key == pygame.K_4:
                 tryhardMode = not tryhardMode
             elif event.key == pygame.K_h:
                 helpOn = not helpOn
-            elif event.key == pygame.K_w:
+            elif event.key == pygame.K_5:
                 widePaddle = not widePaddle
                 if widePaddle == False:
                         paddle = pygame.Rect(PADDLE_X, PADDLE_Y, PADDLE_WIDTH, PADDLE_HEIGHT)
                 elif widePaddle == True:
                         paddle = pygame.Rect(0, PADDLE_Y, SCREEN_WIDTH, PADDLE_HEIGHT)
-            elif event.key == pygame.K_m:
-                megaBall = not megaBall
-                if megaBall == False:
-                        ball = pygame.Rect(250, 30, BALL_WIDTH, BALL_HEIGHT)
-                elif megaBall == True:
-                        ball = pygame.Rect(250, 30, 100, 100)
+            elif event.key == pygame.K_6:
+                tinyPaddle = not tinyPaddle
+                if tinyPaddle == False:
+                    paddle = pygame.Rect(PADDLE_X, PADDLE_Y, PADDLE_WIDTH, PADDLE_HEIGHT)
+                elif tinyPaddle == True:
+                    paddle = pygame.Rect(PADDLE_X, PADDLE_Y, PADDLE_WIDTH / 4, PADDLE_HEIGHT)
+            elif event.key == pygame.K_7:
+                sophMode = not sophMode
+                if sophMode == False:
+                    tryhardMode = False
+                if sophMode == True:
+                    tryhardMode = True
+                    COLOR_LIST = []
+                    for i in range(10):
+                        COLOR_LIST.append(RED)
+                    for i in range(10):
+                        COLOR_LIST.append(ORANGE)
+                    for i in range(10):
+                        COLOR_LIST.append(YELLOW)
+                    for i in range(10):
+                        COLOR_LIST.append(GREEN)
+                    for i in range(10):
+                        COLOR_LIST.append(BLUE)
+                    for i in range(10):
+                        COLOR_LIST.append(INDIGO)
+                    for i in range(10):
+                        COLOR_LIST.append(VIOLET)
+                    for i in range(10):
+                        COLOR_LIST.append(WHITE)
+
+            elif event.key == pygame.K_b:
+                ballShape = ballShape + 1
+                if ballShape >= 4:
+                    ballShape = 1
+
+                if ballShape == 1: #standard ball
+                    ball = pygame.Rect(ball.x, ball.y, BALL_WIDTH, BALL_HEIGHT)
+                elif ballShape == 2: #Megaball
+                    ball = pygame.Rect(ball.x, ball.y, 100, 100)
+                elif ballShape == 3: #wide ball
+                    ball = pygame.Rect(0, ball.y, SCREEN_WIDTH, BALL_HEIGHT)
+
+            elif event.key == pygame.K_p:
+                pause = not pause
+
+                if pause == True:
+                    ballXSpeed = 0
+                    ballYSpeed = 0
+                elif pause == False:
+                    ballXSpeed = 5
+                    ballYSpeed = 5
+            elif event.key == pygame.K_q:
+                done = True
+                    
+
+                    
+
 
 
         elif event.type == pygame.KEYUP:
@@ -150,10 +215,23 @@ while not done:
     screen.fill(BLACK)
     
     # --- Your Drawing & Updating Here
+
+    if sophMode == True:
+        if mtimer >= (gameSpeed * 3):
+            go = True
+            mtimer = 0
+        else:
+            if go == True and pause != True:
+                missile = missile.move(0, 3)
+            else:
+                mtimer = mtimer + 1
+
     if slowBall == False:
         ball = ball.move(ballXSpeed, ballYSpeed)
     elif slowBall == True:
         ball = ball.move(ballXSpeed / 5, ballYSpeed / 5)
+
+    
     paddle = paddle.move(paddleSpeed, 0)
     
     if widePaddle == False:
@@ -161,26 +239,54 @@ while not done:
     elif widePaddle == True:
         pygame.draw.rect(screen, WHITE, paddle)
     pygame.draw.rect(screen, WHITE, ball)
+    pygame.draw.rect(screen, RED, missile)
+
 
     i = 0
     for block in blockList:
         #pygame.draw.rect(screen, GREEN, block)
-        pygame.draw.rect(screen, COLOR_LIST[i], block)
-        i = i + 1
+        if sophMode == True:
+            if timer >= 500:
+                random.shuffle(SOPH_LIST)
+                pygame.draw.rect(screen, SOPH_LIST[i], block)
+                i = i + 1
+                timer = 0
+            else:
+                pygame.draw.rect(screen, SOPH_LIST[i], block)
+                timer = timer + 1
+                i = i + 1
+        elif sophMode == False:       
+            pygame.draw.rect(screen, COLOR_LIST[i], block)
+            i = i + 1
 
 
-    lifes = "X" * lives
-    helpText = helpFont.render("P - Toggle block phys, S - Slow ball, G - Godmode, T - Tryhard mode, W - Wide paddle, M - Mega ball", True, WHITE)
-    scoreText = font.render("Score: " + str(score), True, WHITE)
+    if lives >= 10:
+        lifes = str(lives) + "X"
+    else:
+        lifes = "X" * lives
+    if score >= 10000 and score < 1000000:
+        kscore = score / 1000
+        pscore = str(kscore) + "K"
+    elif score >= 1000000:
+        kscore = score / 1000000
+        kscore = round(kscore)
+        pscore = str(kscore) + "M"
+    else:
+        pscore = score
+    helpText = helpFont.render("1 - Block bounce, 2 - Slow ball, 3 - Godmode, 4 - Tryhard, 5 - Wide paddle, 6 - Small paddle", True, WHITE)
+    helpText2 = helpFont.render("7 - Sophia mode, B - Ball shape, P - Pause, R - Restart, Q - Quit", True, WHITE)
+    scoreText = font.render("Score: " + str(pscore), True, WHITE)
     lifeText = font.render("Lives: " + str(lifes), True, WHITE)
     levelText = font.render("Level: " + str(level), True, WHITE)
     levelWidth = levelText.get_width()
     helpWidth = helpText.get_width()
+    helpWidth2 = helpText2.get_width()
     screen.blit(scoreText, [SCREEN_WIDTH - 125, SCREEN_HEIGHT - 20])
     screen.blit(lifeText, [SCREEN_WIDTH - 500, SCREEN_HEIGHT - 20])
     screen.blit(levelText, [SCREEN_WIDTH / 2 - levelWidth / 2, SCREEN_HEIGHT - 20])
     if helpOn == True:
         screen.blit(helpText, [SCREEN_WIDTH / 2 - helpWidth / 2, SCREEN_HEIGHT - 200])
+        screen.blit(helpText2, [SCREEN_WIDTH / 2 - helpWidth2 / 2, SCREEN_HEIGHT - 190])
     
     if ball.right > SCREEN_WIDTH:
         ballXSpeed = -ballXSpeed
@@ -204,10 +310,30 @@ while not done:
     if paddle.left < 0:
         paddle = paddle.move(20, 0)
 
+    if missile.colliderect(paddle):
+        if godMode != True:
+            lives = lives - 1
+        go = False
+        newLoc = random.randint(50, 450)
+        missile = pygame.Rect(newLoc, -30, 10, BALL_WIDTH)
+
+    if missile.top > SCREEN_HEIGHT:
+        go = False
+        newLoc = random.randint(50, 450)
+        missile = pygame.Rect(newLoc, -30, 10, BALL_WIDTH)
+
+        
+
     index = ball.collidelist(blockList)
     if index != -1 and firstColl != False:
         score = score + 100
-        blockList.remove(blockList[index])
+        if sophMode == True:
+            if index not in alreadyhit:
+                alreadyhit.append(index)
+            elif index in alreadyhit:
+                blockList.remove(blockList[index])
+        else:
+            blockList.remove(blockList[index])
         if blockPhysics != False:
             ballYSpeed = -ballYSpeed
 
@@ -215,7 +341,7 @@ while not done:
     # --- Other Tasks After Drawing
     if lives < 0:
         getOofed = failFont.render("YOU LOSE", True, WHITE)
-        restart = font.render("R to restart, H for 'Help' ;)", True, WHITE)
+        restart = font.render("R to restart, H for Help", True, WHITE)
         gameOver = True
         ballXSpeed = 0
         ballYSpeed = 0
@@ -229,8 +355,14 @@ while not done:
     if blockList == []:
         level = level + 1
         lives = lives + 1
+        alreadyhit = []
         firstColl = False
-        ball = pygame.Rect(250, 30, BALL_WIDTH, BALL_HEIGHT)
+        if ballShape == 1: #standard ball
+            ball = pygame.Rect(ball.x, ball.y, BALL_WIDTH, BALL_HEIGHT)
+        elif ballShape == 2: #Megaball
+            ball = pygame.Rect(ball.x, ball.y, 100, 100)
+        elif ballShape == 3: #wide ball
+            ball = pygame.Rect(0, ball.y, SCREEN_WIDTH, BALL_HEIGHT)
         gameSpeed = gameSpeed + 5
         blockList = getListOf10Blocks(0, COLOR_LIST)
 
@@ -238,7 +370,7 @@ while not done:
     if tryhardMode == False:
         clock.tick(gameSpeed) # 60 frames per second
     elif tryhardMode == True:
-        clock.tick(120)
+        clock.tick(gameSpeed * 2)
  
 
 
