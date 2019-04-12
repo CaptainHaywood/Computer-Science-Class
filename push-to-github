@@ -1,6 +1,5 @@
 #!/bin/bash
 NOW=$(date +"%m-%d-%Y")
-cd /home/james/Desktop/CompSci
 git add .
 git commit -m "$NOW"
 git push -u origin master

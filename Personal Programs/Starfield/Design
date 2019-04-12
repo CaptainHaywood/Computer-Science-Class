@@ -1,0 +1,83 @@
+--- STARFIELD: TEXT-BASED SPACE 4X ---
+
+
+Starfield takes place in the far future, in which different factions of humanity are warring for control of various star clusters rich in ultrarare elements. Colony ships are launched out to suspected clusters via FTL cannon, and left to fend for themselves and eventually send back resources to their faction (if they succeed, that is).
+
+- RESOURCES -
+
+Tritanium (#): A sturdy metal alloy that is essential for spacecraft construction. Most abundant resource.
+
+Molybdenum (*): An exotic metal with many curious properties. Used in advanced construction (battleships, starports, stargates, etc.) Second most abundant resource.
+
+Quirium (@): The fuel of all spacecraft, Quirium can be burned to produce power and/or bend space for faster-than-light travel. Least abundant resource.
+
+Money ($): Used to purchase certain planetside upgrades, and to accelerate research and building.
+
+- SHIP MECHANICS -
+
+* Fuel
+Ships consume a set amount of Quirium per turn, determined by the class of ship. For example, scouts consume 1@ per turn, while a battleship consumes 5@ per turn. If there is not enough fuel to go around, ships will recieve what is available in priority order until it runs out. By default this fueling goes battleships first, transports second, colony ships third, and scouts fourth, but it can be rearranged. If a ship only has half of it's required fuel, it can move around in-system and fight (with decreased effectiveness) BUT it cannot execute an FTL jump. Ships with a quarter of their required fuel can only move in-system, and ships with NO fuel are dead in the vacuum.
+
+* Weaponry
+Weapon power is determined by ship class, tech level, and equipped weapon type. Weapon types are kinetic (railguns, batteries), missile (thermobaric, thermonuclear), or energy (laser, plasma bolt). Each type has slightly different effects, and higher tech weapons may require more fuel.
+
+Kinetic Weaponry
+- Railguns accelerate metal slugs to stupid high speeds and aim them at an enemy. The benefit being that you get massive penetrating damage if the hit connects, but the detriment being that it's very hard to aim accurately.
+- Batteries are essentially scaled up machine guns glued to the front and sides of a ship. The benefit is that you aim quite well, but the overall damage per hit is small compared to a railgun.
+- Coilguns are the high-tech compromise between railguns and batteries. More accurate than a railgun, but not quite as damaging.
+
+Missile Weaponry
+- Thermobaric missiles are your standard TNT-on-a-rocket setup. The benefit is that they're cheap and relatively accurate (missiles consume resources per fire) but they don't do a huge amount of damage.
+- Thermonuclear missiles are more expensive and damaging, but less accurate as the radiation signature gives the enemy a chance to track and dodge the missile.
+- Quirium missiles are the high-tech compromise between thermobaric and thermonuclear missiles. By drawing directly on the ship's fuel tank as well as standard resources, ships can launch a fairly damaging and accurate missile.
+
+Energy Weaponry
+- Lasers are much like railguns in that they are fairly innacurate but do large penetrating damage if they do connect. However, lasers start out with a mediocre damage output, which increases with each successful hit on the enemy. This can potentially surpass the damage of a railgun after several consecutive hits.
+- Plasma bolts are essentially energy batteries, but they feature the same increasing damage curve as lasers.
+- Plasmised lasers are the high-tech compromise between lasers and plasma bolts. They have moderately good aim, but start with very low damage that increases with each consecutive hit.
+
+* Travel
+Interplanetary travel is free (if you have the fuel) and instant, allowing ships to go anywhere in a system. However, interplanetary travel is locked down once a ship has an action planned, like scanning, settling or attacking.
+Interstellar travel operates on an adjacency system. Initially, ships can only execute jumps to adjacent stars, which plucks them out of realspace for a turn before dumping them out at the destination in the next turn. Better technology can separately increase the range and speed of FTL travel, and stargates can allow instant travel between any two gates on the network.
+
+- SHIPS AND STRUCTURES - 
+Ships include:
+- Scout: A small, cheap ship with light weaponry. Meant for scouting and the occasional light skirmish. Consumes 1@/t.
+- Colony Ship: A massive, defenseless ship with the population and supplies to settle a planet. Consumes 10@/t. Consumed upon settling a planet.
+- Support Ship: A converted freighter filled with tools and tech teams, meant to assist and maintain a fleet without requiring a return to a starport. Consumes 3@/t.
+- Corvette: Medium fighter with decent weaponry. Meant for one-on-one defense against other corvettes, or ganging up on a battleship. Consumes 3@/t.
+- Battleship: Heavy fighter with heavy weaponry. Meant for larger engagements against multiple corvettes or other battleships, or ganging up on a dreadnought. Consumes 5@/t.
+- Dreadnought: End-game, ultramassive battle platform with weapons that instill the fear of God in any enemies within an AU. Meant for mowing down corvettes like marshmallows, or for engagements against a few battleships or even other dreadnoughts (assuming the enemy managed to build one before you annihilated them with yours.) Consumes 15@/t.
+
+Structures include:
+- Starport (<->): Orbiting station that can build and maintain ships and other structures.
+- Mining Station (<*>): Orbiting station that hoovers up resources from uninhabitable worlds.
+- Defense Station (<^>): Orbiting station with a weapon mount, for planetary defense.
+- Drydock (<~>): Orbiting station that can hold ship(s) in an offline state (no fuel consumption.)
+- Trade Station (<$>): Orbiting station that generates money. Amount generated increases with the amount of trade stations in the same system and in adjacent systems.
+- Stargate ((@)): A gate built at the edge of the local system that permanentely folds space. If there are other stargates owned by the same faction, a ship can instantly travel from one stargate to any other, and even move around and perform actions in a destination system.
+
+- TECHNOLOGY -
+
+Technology is advanced by building Labs on settled planets, which generate tech points per turn. These points can then be used to upgrade technologies. There are several categories which can be upgraded:
+
+WEAPONRY (upgrading applies slight buffs to all weapons, and unlocks new weapons at certain levels)
+SHIPS (upgrading applies slight buffs to hull strength, and unlocks new ships at certain levels)
+PRODUCTION (upgrading applies a buff to construction speed and cost, and unlocks new structures at certain levels)
+MINING (upgrading applies a slight buff to resource collection)
+FTL RANGE (upgrading increases FTL range, default 1 unit)
+FTL SPEED (upgrading increases FTL speed, default 1 unit per turn)
+ASCENSION (upgrade to max for SCI VICTORY. very expensive, and each level applies slight DEBUFF to everything except FTL)
+
+- COMBAT - 
+
+Combat is executed when two enemy ships or fleets orbit the same planet. The game will then simulate combat between the two fleets, turn-by-turn. (GRAPHICALLY?)
+
+Ships have one important thing to worry about: Hull. If this reaches zero... boom. Hits from enemy weapons will reduce hull, and help from support ships will increase it.
+
+- WINNING -
+
+Extermination victory: Be the last faction standing.
+Domination victory: Control 50% of the cluster for 5 turns.
+Science victory: Max out ascension so you can ascend to a higher plane and yeet on every enemy thing simultaneously
+Point victory: If the game goes on longer than X turns, combine resources, shios, planets, structures, and other stuff into a point value. Faction with the highest one wins.
