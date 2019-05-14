@@ -1,0 +1,7 @@
+def translate(dna):
+    toFlip = find_complimentary_bases(dna)
+    final = flip_strand(toFlip)
+    final = space_strand(final)
+    return final
+
+This algorithm, translate, is responsible for calling several other algorithms (defined in separate functions) that work in order to translate and format the answer requested by the user. The first algorithm takes the users input and returns the answer as a list, with each index containing one character. The next algorithm takes the previous list and reverses it's order. The third function takes the reversed list, converts it into a string, inserts spaces at regular intervals, and returns it to translate, which then returns it to the original function call, printing the answer.

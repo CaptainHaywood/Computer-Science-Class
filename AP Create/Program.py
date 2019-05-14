@@ -17,7 +17,7 @@ def process_select(dna):
     print("3 Purge and Enter New Sequence")
     selection = int(input("> "))
     if selection == 1:
-        print(''.join(dna))
+        print(space_strand(dna))
         process_select(dna)
     elif selection == 2:
         print("")
