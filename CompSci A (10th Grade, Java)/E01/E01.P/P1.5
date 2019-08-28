@@ -1,0 +1,20 @@
+rows = input() (7)
+columns = input() (9)
+
+modHoriz = rows % 2
+
+row = 0
+
+while row != rows + 1{
+	if row == 0 or row == rows {
+		DrawXSquaresInRow(row, columns)
+		row++
+	}
+	else
+	{
+		DrawSqaureInColumn(0)
+		DrawSquareInColumn(columns)
+		row++
+	}
+}
+
