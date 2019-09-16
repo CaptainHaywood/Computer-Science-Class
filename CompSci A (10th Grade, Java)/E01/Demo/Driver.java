@@ -1,19 +1,22 @@
-import javax.swing.JOptionPane;
+import java.util.Random;
+import java.awt.Color;
 
 public class Driver {
     public static void main(String[] args){
-        String line1;
-        int length;
-        line1 = "123";
+        Random r1 = new Random();
         
-        length = line1.length();
+        int die1 = r1.nextInt(6) + 1;
         
-        System.out.println(length);
+        System.out.println(die1);
         
-        String moveLoc = JOptionPane.showInputDialog(null, "Enter move:");
+        StringBuilder sb1 = new StringBuilder("park");
         
-        line1 = line1.replace(moveLoc, "X");
+        System.out.println(sb1.reverse());
         
-        System.out.println(line1);
+        Color c1 = new Color(100,50,75);
+        
+        Color c2 = c1.brighter();
+        
+        System.out.println(c2);
     }
 }

@@ -1,8 +1,6 @@
 public class Driver {
     public static void main(String[] args){
-        StringBuilder rev;
-        rev.append("desserts");
-        System.out.println(rev);
+        StringBuilder rev = new StringBuilder ("desserts");
         rev.reverse();
         System.out.println(rev);
     }
