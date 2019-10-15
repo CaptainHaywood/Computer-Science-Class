@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Target
+comment0.text=\r\n\ \ \ Draws\ a\ target.\r\n
+comment1.params=r\ x\ y
+comment1.target=Target(double,\ double,\ double)
+comment1.text=\r\n\ \ \ \ \ \ Creates\ a\ new\ instance\ of\ Target.\r\n\ \ \ \ \ \ @param\ r\ the\ radius\r\n\ \ \ \ \ \ @param\ x\ the\ center\ x-coordinate\r\n\ \ \ \ \ \ @param\ y\ the\ center\ y-coordinate\r\n
+comment2.params=g2
+comment2.target=void\ draw(java.awt.Graphics2D)
+comment2.text=\r\n\ \ \ \ \ \ Draws\ the\ target.\r\n\ \ \ \ \ \ @param\ g2\ the\ graphics\ context\r\n
+numComments=3

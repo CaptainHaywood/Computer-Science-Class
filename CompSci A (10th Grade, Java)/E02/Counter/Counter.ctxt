@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Counter
-comment1.params=
-comment1.target=void\ click()
-comment2.params=
-comment2.target=int\ getClicks()
-numComments=3

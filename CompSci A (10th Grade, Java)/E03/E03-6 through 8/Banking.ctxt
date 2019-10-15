@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Banking
+comment1.params=amount
+comment1.target=void\ deposit(double)
+comment2.params=amount
+comment2.target=void\ withdraw(double)
+comment3.params=origin\ destination\ value
+comment3.target=void\ transfer(Banking,\ Banking,\ double)
+comment4.params=
+comment4.target=double\ returnBalance()
+comment5.params=
+comment5.target=void\ BankAccountTester()
+numComments=6

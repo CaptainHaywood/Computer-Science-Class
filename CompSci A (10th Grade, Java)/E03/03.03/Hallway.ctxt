@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Hallway
+comment1.params=
+comment1.target=void\ toggleSwitchOne()
+comment2.params=
+comment2.target=void\ toggleSwitchTwo()
+comment3.params=
+comment3.target=boolean\ getSwitchOneState()
+comment4.params=
+comment4.target=boolean\ getSwitchTwoState()
+comment5.params=
+comment5.target=boolean\ getLampState()
+comment6.params=
+comment6.target=void\ circuitTester()
+comment7.params=str
+comment7.target=void\ print(java.lang.String)
+comment8.params=
+comment8.target=void\ printState()
+numComments=9

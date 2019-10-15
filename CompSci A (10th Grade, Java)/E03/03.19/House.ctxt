@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=House
+comment0.text=\r\n\ \ \ This\ class\ draws\ a\ house\ at\ a\ specified\ (x,y)\ coordinate.\r\n
+comment1.params=inX\ inY
+comment1.target=House(int,\ int)
+comment1.text=\r\n\ \ \ \ \ \ Constructor\ to\ initialize\ the\ x,y\ coordinate.\r\n\ \ \ \ \ \ @param\ inX\ the\ x\ of\ upper\ left\ point\ of\ the\ bounding\ box\ \r\n\ \ \ \ \ \ @param\ inY\ the\ y\ of\ upper\ left\ point\ of\ the\ bounding\ box\ \r\n
+comment2.params=g2
+comment2.target=void\ draw(java.awt.Graphics2D)
+comment2.text=\r\n\ \ \ \ \ \ Draws\ the\ house\r\n\ \ \ \ \ \ @param\ g2\ the\ graphics\ context\r\n
+numComments=3

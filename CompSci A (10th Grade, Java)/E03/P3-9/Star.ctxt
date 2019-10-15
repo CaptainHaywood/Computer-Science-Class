@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Star
+comment0.text=\r\n\ \ \ A\ star.\r\n
+comment1.params=inX\ inY\ inW\ inH
+comment1.target=Star(double,\ double,\ double,\ double)
+comment1.text=\r\n\ \ \ \ \ \ Constructs\ a\ Star\ at\ x,\ y\ coordinates\ of\ size\ w\ *\ h\r\n\ \ \ \ \ \ @param\ inX\ the\ x-coordinate\ of\ the\ topleft\ corner\r\n\ \ \ \ \ \ @param\ inY\ the\ y-coordinate\ of\ the\ topleft\ corner\r\n\ \ \ \ \ \ @param\ inW\ the\ width\r\n\ \ \ \ \ \ @param\ inH\ the\ height\r\n
+comment2.params=g2
+comment2.target=void\ draw(java.awt.Graphics2D)
+comment2.text=\r\n\ \ \ \ \ \ Draws\ the\ star.\r\n\ \ \ \ \ \ @param\ g2\ the\ graphics\ context\r\n
+numComments=3

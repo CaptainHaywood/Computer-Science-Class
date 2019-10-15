@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Moth
+comment0.text=\r\n\ \ \ This\ class\ models\ a\ moth\ that\ flies\ along\ a\ straight\ line\ toward\r\n\ \ \ a\ light\ source.\r\n
+comment1.params=initialPosition
+comment1.target=Moth(double)
+comment2.params=lightPosition
+comment2.target=void\ moveToLight(double)
+comment2.text=\r\n\ \ \ \ \ \ Moves\ the\ moth\ halfway\ to\ the\ light\ source.\r\n\ \ \ \ \ @param\ lightPosition\ the\ light\ position\r\n
+comment3.params=
+comment3.target=double\ getPosition()
+comment3.text=\r\n\ \ \ \ \ \ Gets\ the\ current\ position\ of\ this\ moth.\r\n\ \ \ \ \ \ @return\ the\ position\r\n
+numComments=4

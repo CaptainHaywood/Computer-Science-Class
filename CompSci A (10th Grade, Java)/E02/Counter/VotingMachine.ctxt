@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=VotingMachine
+comment1.params=
+comment1.target=void\ voteRep()
+comment2.params=
+comment2.target=void\ voteDem()
+comment3.params=
+comment3.target=void\ reset()
+comment4.params=
+comment4.target=int\ getRepVotes()
+comment5.params=
+comment5.target=int\ getDemVotes()
+numComments=6
