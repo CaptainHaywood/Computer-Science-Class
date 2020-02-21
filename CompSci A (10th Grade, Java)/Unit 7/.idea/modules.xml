@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/07.16/07.16.iml" filepath="$PROJECT_DIR$/07.16/07.16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7.10/7.10.iml" filepath="$PROJECT_DIR$/7.10/7.10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P7.05/P7.05.iml" filepath="$PROJECT_DIR$/P7.05/P7.05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P7.06/P7.06.iml" filepath="$PROJECT_DIR$/P7.06/P7.06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P7.10/P7.10.iml" filepath="$PROJECT_DIR$/P7.10/P7.10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P7.4/P7.4.iml" filepath="$PROJECT_DIR$/P7.4/P7.4.iml" />
       <module fileurl="file://$PROJECT_DIR$/Unit 7.iml" filepath="$PROJECT_DIR$/Unit 7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Video Poker/Video Poker.iml" filepath="$PROJECT_DIR$/Video Poker/Video Poker.iml" />
     </modules>
   </component>
 </project>

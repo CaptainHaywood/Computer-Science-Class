@@ -1,0 +1,3 @@
+Sorry this one is late. When I got home on Thursday my Mom revealed we were going to Chicago and coming back Saturday evening, and I got video poker in but forgot the source code >.<
+
+Here it is. Overall, the unit was a bit more difficult than before, and I really hated having to visualize 2D arrays in my head. The way the system works is kinda esoteric - I wish there was a simpler way to determine coordinates in the array - but oh well.
