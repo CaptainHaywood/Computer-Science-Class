@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Driver {
     public static void main(String[] args) {
-
+        Bus indyGo = new Bus();
+        indyGo.iterateSimulation();
     }
 }
