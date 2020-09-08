@@ -1,14 +1,12 @@
 import java.util.ArrayList;
-import java.util.regex.*;
 
 public class FamilyCreator {
 
-    private ArrayList<WordFamilies> wordFams;
+    private ArrayList<WordFamily> wordFams;
 
     private void familyEval(ArrayList<String> possibleWords, String inputCharacter){
         //var init
         char inputChar = inputCharacter.charAt(0);
-        boolean done = false;
         int wordCount = possibleWords.size();
         ArrayList<String> validWords = new ArrayList<>();
         ArrayList<String> collapsedWords = new ArrayList<>();
@@ -42,9 +40,10 @@ public class FamilyCreator {
                 compressedOptions.add(collapsedWords.get(i));
             }
         }
+
     }
 
-    public ArrayList<WordFamilies> getFamilies(){
+    public ArrayList<WordFamily> getFamilies(){
         return wordFams;
     }
 
