@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Driver {
+public class Driver_Numeric {
     public static void main(String[] args) {
         ArrayList<Integer> numbers = new ArrayList<>();
         for(int i = 0; i < 100; i++){
