@@ -1,0 +1,4 @@
+TFW you write the entirety of the most logical class and Sophia D goes
+"oh yeah I made my own implementation in this other class"
+
+Design doc who?	
