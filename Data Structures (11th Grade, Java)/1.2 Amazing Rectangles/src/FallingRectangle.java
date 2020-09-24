@@ -25,10 +25,12 @@ public class FallingRectangle extends AbstractRectangle {
      */
     @Override
     public void act(int drawAreaWidth, int drawAreaHeight) {
-        this.translate(0, 1);
-        if(this.getLocation().y > 400){
+        if(this.getLocation().y > 410){
             this.setSize((int) this.getWidth() + 2, (int) this.getHeight() - 1);
             this.setLocation((int) this.getX() - 1, (int) this.getY() + 1);
+        }
+        else{
+            this.translate(0, 1);
         }
     }
 }
