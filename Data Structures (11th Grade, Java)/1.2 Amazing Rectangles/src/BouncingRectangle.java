@@ -14,8 +14,10 @@ public class BouncingRectangle extends AbstractRectangle {
      * @param inH height
      * @param inFillColor fill color
      */
-    public BouncingRectangle(int inX, int inY, int inW, int inH, Color inFillColor) {
+    boolean bounce;
+    public BouncingRectangle(int inX, int inY, int inW, int inH, Color inFillColor, Boolean bounce) {
         super(inX, inY, inW, inH, inFillColor);
+        bounce = bounce;
     }
 
     /**
@@ -25,6 +27,16 @@ public class BouncingRectangle extends AbstractRectangle {
      */
     @Override
     public void act(int drawAreaWidth, int drawAreaHeight) {
-            this.translate(0, 1);
+            int x = 0;
+            int y = 0;
+            if(bounce = true){
+                x = 0;
+                y = 1;
+            }
+            else{
+                x=1;
+                y=0;
+            }
+            this.translate(x, y);
     }
 }
