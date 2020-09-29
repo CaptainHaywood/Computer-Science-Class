@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by rritz on 9/3/2015.
@@ -14,10 +15,22 @@ public class BouncingRectangle extends AbstractRectangle {
      * @param inH height
      * @param inFillColor fill color
      */
-    boolean bounce;
-    public BouncingRectangle(int inX, int inY, int inW, int inH, Color inFillColor, Boolean bounce) {
+    int x;
+    int y;
+    public BouncingRectangle(int inX, int inY, int inW, int inH, Color inFillColor) {
         super(inX, inY, inW, inH, inFillColor);
-        bounce = bounce;
+        x=0;
+        y=0;
+        Random rd = new Random(); // creating Random object
+        boolean bounce = rd.nextBoolean();
+        if(bounce == true){
+            x = 0;
+            y = 1;
+        }
+        else if(bounce == false){
+            x=1;
+            y=0;
+        }
     }
 
     /**
@@ -27,16 +40,18 @@ public class BouncingRectangle extends AbstractRectangle {
      */
     @Override
     public void act(int drawAreaWidth, int drawAreaHeight) {
-            int x = 0;
-            int y = 0;
-            if(bounce = true){
-                x = 0;
+            this.translate(x, y);
+            if(this.getLocation().x > 435){
+                x = -1;
+            }
+            if(this.getLocation().x < 0){
+                x = 1;
+            }
+            if(this.getLocation().y > 425){
+                y = -1;
+            }
+            if(this.getLocation().y < 0){
                 y = 1;
             }
-            else{
-                x=1;
-                y=0;
-            }
-            this.translate(x, y);
     }
 }
