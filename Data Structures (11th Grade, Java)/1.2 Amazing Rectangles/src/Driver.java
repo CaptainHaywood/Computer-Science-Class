@@ -35,6 +35,10 @@ public class Driver {
         drawArea.addRectangle(br);
         br = new BouncingRectangle(drawArea.getWidth()/2 - 25, 100, 50, 50, Color.PINK);
         drawArea.addRectangle(br);
+        ColliderRectangle cor = new ColliderRectangle(100, 70, 50, 50, Color.ORANGE, drawArea, 1, 0);
+        drawArea.addRectangle(cor);
+        cor = new ColliderRectangle(400, 70, 50, 50, Color.BLUE, drawArea, -1, 0);
+        drawArea.addRectangle(cor);
 
 
         // Create inner class to assist with animation

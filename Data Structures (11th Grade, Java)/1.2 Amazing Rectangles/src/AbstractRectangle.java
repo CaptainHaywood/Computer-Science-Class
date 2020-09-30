@@ -51,4 +51,8 @@ public abstract class AbstractRectangle extends Rectangle {
      * be implemented by the subclasses.
      */
     public abstract void act(int drawAreaCompWidth, int drawAreaCompHeight);
+
+    public String recType(){
+        return "default";
+    }
 }

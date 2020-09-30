@@ -41,4 +41,8 @@ public class DrawingAreaComponent extends JComponent {
             rect.draw(g2);
         }
     }
+
+    public ArrayList<AbstractRectangle> getRectList(){
+        return rectangleList;
+    }
 }
