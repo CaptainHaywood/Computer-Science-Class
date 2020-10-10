@@ -19,8 +19,18 @@ public class UnsortedList<E> extends AbstractList<E>
     public boolean add(E obj) {
         if(isFull())
             return false;
-
-        // TODO: Complete this method.
+        else{
+            /*E[] newList = (E[]) new Object[theList.length + 1];
+            for(int i = 0; i < theList.length; i++){
+                newList[i] = theList[i];
+            }
+            newList[theList.length] = obj;
+            theList = newList;*/
+            int ind = size;
+            theList[ind] = obj;
+            size++;
+            return true;
+        }
     }
 
     /**
@@ -29,8 +39,11 @@ public class UnsortedList<E> extends AbstractList<E>
      * @return the index where obj is found in the list or -1 if not found
      */
     public int indexOf(E obj) {
-
-        // TODO: Complete this method.
-
+        for(int i = 0; i < size; i++){
+            if(theList[i].equals(obj)){
+                return i;
+            }
+        }
+        return -1;
     }
 }

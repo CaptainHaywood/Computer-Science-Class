@@ -11,6 +11,7 @@ public class SortedList <E extends Comparable<E>> extends AbstractList<E>
      */
     public SortedList(int maxItems) {
         theList = (E[]) new Comparable[maxItems];
+        size = 0;
     }
 
     /**
@@ -22,8 +23,13 @@ public class SortedList <E extends Comparable<E>> extends AbstractList<E>
         if(isFull())
             return false;
 
-        // TODO : Complete this method.
-
+        // TODO : Complete this method.;
+        int ind = indexOf(obj);
+        ind++;
+        ind = -ind;
+        System.arraycopy(theList, ind, theList, ind + 1, size - ind);
+        theList[ind] = obj;
+        size++;
         return true;
     }
 
@@ -39,7 +45,6 @@ public class SortedList <E extends Comparable<E>> extends AbstractList<E>
      * is found.
      */
     public int indexOf(E obj) {
-
         return Arrays.binarySearch(theList, 0, size, obj);
     }
 }

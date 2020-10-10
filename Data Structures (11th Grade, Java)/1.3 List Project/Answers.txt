@@ -1,0 +1,10 @@
+1. If I recall correctly, <E> is a generic object, meaning that AbstractList can accept any objects into itself rather than just, say, Strings.
+2. So it can be customized to fit Unsorted/SortedList, as each one requires a different implementation of IndexOf to function correctly.
+3. Because its implementation will work across both types of list.
+4. A SortedList would be useful if you need to be able to search through an incredibly large bank of data, as it would be faster at doing so than an UnsortedList.
+
+
+Unsorted List Time: 5ms
+Sorted List Time: 0ms (?)
+
+Note: Why the HELL would anyone ever use Arrays over ArrayLists? The former is an immutable piece of crap that you have to construct hackjobs around to perform simple tasks like inserting or removing an item, while the latter features those as single-line functions. 

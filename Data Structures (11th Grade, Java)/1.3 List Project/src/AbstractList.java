@@ -30,10 +30,40 @@ public abstract class AbstractList<E>
      * @return a string representation of the list
      */
     public String toString() {
-        // ...
+        String result = "[";
+        for(int i = 0; i < theList.length; i++){
+            if(theList[i] != null){
+                result = result + theList[i];
+            }
+            else{
+                result = result + "null";
+            }
+            if(i == theList.length - 1){
+                result = result + "]";
+            }
+            else{
+                result = result + ", ";
+            }
+        }
+        return result;
     }
 
     public abstract boolean add(E obj);
     public abstract int indexOf(E obj);
+    public boolean remove(E obj){
+        int index = -1;
+        for(int i = 0; i < size; i++){
+            if(theList[i].equals(obj)){
+                index = i;
+            }
+        }
+        if(index == -1){
+            return false;
+        }
+        else{
+            System.arraycopy(theList, index + 1, theList, index, theList.length - 1 - index);
+        }
+        return true;
+    }
 
 }
