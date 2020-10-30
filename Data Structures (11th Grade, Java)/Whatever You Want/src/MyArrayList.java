@@ -6,7 +6,7 @@ public class MyArrayList<E> extends AbstractList<E> {
 
     public MyArrayList(){
         size = 0;
-        theData = (E[]) new Object [10];
+        theData = (E[]) new Object [0];
     }
 
     @Override
@@ -15,39 +15,55 @@ public class MyArrayList<E> extends AbstractList<E> {
             throw new IndexOutOfBoundsException("" + index);
         }
 
-        return null;
+        return theData[index];
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     public E set (int index, E element){
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("" + index);
+
+        theData[index] = element;
         return null;
     }
 
     public void add(int index, E element){
 
-            // if index invalid, throw exception
+        if (index < 0 || index > size)
 
-            if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("" + index);
 
-                throw new IndexOutOfBoundsException("" + index);
-
-                // if array is full, make more space
-
-                // shift items, add element and update size
-
-            System.arraycopy(theData, index, theData, index+1, size-index);
-
-            theData[index] = element;
-
-            size++;
-
+        E[] lazySolution;
+        lazySolution = (E[]) new Object [theData.length+1];
+        for (int i = 0; i < theData.length; i++) {
+            lazySolution[i] = theData[i];
         }
+        lazySolution[lazySolution.length-1] = element;
+        theData = lazySolution;
+        size++;
+
+    }
 
     public E remove(int index){
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("" + index);
+        //we stan this implementation :)
+        E[] lazySolution;
+        lazySolution = (E[]) new Object [theData.length-1];
+        for (int i = 0, k = 0; i < theData.length; i++) {
+            if (i == index) {
+                int nada = 0;
+            }
+            else{
+                lazySolution[k++] = theData[i];
+            }
+        }
+        theData = lazySolution;
+        size--;
         return null;
     }
 }
