@@ -1,4 +1,5 @@
 public class SingleLinkedList<E> {
+    //LETS GO THIS MF BITCH WORKS
 
     private static class Node<E> {
         private E data;
@@ -24,8 +25,6 @@ public class SingleLinkedList<E> {
      *
      * @param item The item to be inserted
      */
-    //should this even work??
-    //my rapidly deteriorating sanity expressed in code comments ^
     private void addFirst(E item) {
         Node babyNode = new Node(item, head);
         head = babyNode;
@@ -38,9 +37,9 @@ public class SingleLinkedList<E> {
      * @param index The index of the node sought
      * @returns The node at index or null if it does not exist
      */
-    //DONE
+    //DONE, not used?? god im such a clown
     private Node<E> getNode(int index) {
-        if(index < 0 || index > size){
+        if(index < 0 || index > size - 1 || size == 0){
             return null;
         }
         Node current = this.head;
@@ -60,17 +59,23 @@ public class SingleLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      * @returns The data at index
      */
-    //DONE
+    //DONE + TEST OK
     public E get(int index) {
-        if(index < 0 || index > size){
+        if(index < 0 || index > size - 1 || size == 0){
             throw new IndexOutOfBoundsException("" + index);
         }
-        Node current = this.head;
-        int i = 0;
-        while (i != index) {
-            current = current.next;
+        Node current = null;
+        if (head != null) {
+            current = head;
+            for (int i = 0; i < index; i++) {
+                if (current == null)
+                    return null;
+
+                current = current.next;
+            }
+            return (E) current.data;
         }
-        return (E) current.data;
+        return (E) current;
     }
 
     /**
@@ -81,18 +86,21 @@ public class SingleLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      * @returns The data value previously at index
      */
-    //DONE
+    //DONE, TEST OK
     public E set(int index, E newValue) {
-        if(index < 0 || index > size){
+        if (index < 0 || index > size - 1 || size == 0) {
             throw new IndexOutOfBoundsException("" + index);
         }
-        Node current = this.head;
-        int i = 0;
-        while (i != index) {
-            current = current.next;
+        Node current = null;
+        if (head != null) {
+            current = head;
+            for (int i = 0; i < index; i++) {
+                if (current == null)
+                    return null;
+                current = current.next;
+            }
+            current.data = newValue;
         }
-        Node newNode = new Node(newValue, current);
-        current = newNode;
         return null;
     }
 
@@ -105,11 +113,24 @@ public class SingleLinkedList<E> {
      * @param item  The item to be inserted
      * @throws IndexOutOfBoundsException if the index is out of range
      */
-    //TODO ADD
+    //DONE, TEST OK
     public void add(int index, E item) {
         if(index < 0 || index > size){
             throw new IndexOutOfBoundsException("" + index);
         }
+        if(head == null || index == 0){
+            addFirst(item);
+            return;
+        }
+        Node current = head;
+        if (current != null) {
+            for (int i = 0; i < index - 1 && current.next != null; i++) {
+                current = current.next;
+            }
+        }
+        Node temp = new Node(item, current.next);
+        current.next = temp;
+        size++;
     }
 
     /**
@@ -118,13 +139,21 @@ public class SingleLinkedList<E> {
      * @param item The item to be appended
      * @returns true (as specified by the Collection interface)
      */
-    //idk how i made this work and its probably best to not question it
+    //DONE, TEST OK
     public boolean add(E item) {
-        Node current = head;
-        while (current.next != null) {
-            current = current.next;
+        if (head == null) {
+            head = new Node(item, head);
+            size++;
+            return true;
         }
-        Node newNode = new Node(item, current);
+        Node current = head;
+        if (current != null) {
+            while (current.next != null) {
+                current = current.next;
+            }
+            Node temp = new Node(item, null);
+            current.next = temp;
+        }
         size++;
         return true;
     }
@@ -147,9 +176,9 @@ public class SingleLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      * @returns The data value previously at index
      */
-    //DONE?
+    //DONE, TEST OK
     public E remove(int index) {
-        if(index < 0 || index > size){
+        if(index < 0 || index > size - 1 || size == 0){
             throw new IndexOutOfBoundsException("" + index);
         }
 
@@ -187,11 +216,16 @@ public class SingleLinkedList<E> {
     @Override
     public String toString() {
         Node current = this.head;
-        String result = "";
-        while (current != null) {
-            result = result + current.data;
-            current = current.next;
+        String result = "[";
+        if(head == null){
+            return "[]";
         }
-        return result;
+        result = result + current.data;
+        current = current.next;
+        while (current != null) {
+             result = result + ", " + current.data;
+             current = current.next;
+        }
+        return result + "]";
     }
 }
