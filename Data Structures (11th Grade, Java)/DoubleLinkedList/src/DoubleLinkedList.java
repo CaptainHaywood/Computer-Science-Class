@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DoubleLinkedList<E> {
     Node<E> head;
@@ -58,29 +59,34 @@ public class DoubleLinkedList<E> {
     public void add(int index, E data) {
         Node<E> newNode = new Node<E>(data);
         Node<E> temp = head;
-        if (index == 0) {
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("" + index);
+        }
+        if(head == null || index == 0){
             addFirst(data);
+            size++;
+            return;
         }
-        else if (index == size - 1) {
+        if(index == size){
             addLast(data);
+            size++;
+            return;
         }
-        else {
-            for (int i = 0; i < index - 1; i++) {
+        for (int i = 0; i < index - 1; i++) {
                 temp = temp.next;
             }
             newNode.next = temp.next;
             temp.next.prev = newNode;
             temp.next = newNode;
             newNode.prev = temp;
+            size++;
         }
-        size++;
-    }
 
     public Node<E> removeFirst() {
         if (!isEmpty()) {
             Node<E> removed = head;
             head = head.next;
-            head.prev = null;
+            //head.prev = null;
             removed.next = null;
             size--;
             return removed;
@@ -104,43 +110,110 @@ public class DoubleLinkedList<E> {
         return null;
     }
 
-    public Node<E> remove(int index) {
+    //AAAAAA
+    public void remove(int index) {
+        /*if(size == -1 && index  == 0){
+            int n = 0;
+        }*/
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("" + index);
+        }
         if (!isEmpty()) {
-            Node<E> removed = null;
-            if (index == 0) {
+            Node<E> temp = head;
+            Node<E> removed = temp;
+            if (index == 0 || size == 1) {
                 removed = removeFirst();
+                //size--;
+                return;
             }
             else if (index == size - 1) {
                 removed = removeLast();
+                //size--;
+                return;
             }
             else {
-                Node<E> temp = head;
-                for (int i = 0; i < index - 1; i++) {
+                for (int i = 0; i < index; i++) {
                     temp = temp.next;
                 }
-                removed = temp.next;
-                temp.next = temp.next.next;
-                temp.next.next.prev = temp;
-                removed.next = null;
-                removed.prev = null;
+                removed = temp;
+                if (head == removed) {
+                    head = removed.next;
+                }
+
+                if (removed.next != null) {
+                    removed.next.prev = removed.prev;
+                }
+
+                if (removed.prev != null) {
+                    removed.prev.prev.next = removed.next;
+                }
+
+                removed = null;
             }
             size--;
-            return removed;
+            return;
         }
-        size--;
-        return null;
     }
 
+    //welcome to the clown show
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             Node<E> node = head;
+            Node<E> previous = null;
+            Node<E> previousSquared = null;
+            Boolean hasIterated = false;
+            @Override
             public boolean hasNext() {
                 return node != null;
             }
+            @Override
             public E next() {
+                if(node == null){
+                    throw new NoSuchElementException();
+                }
                 E data = node.data;
+                if(!hasNext()){
+                    throw new NoSuchElementException();
+                }
+                previousSquared = previous;
+                previous = node;
                 node = node.next;
+                hasIterated = true;
                 return data;
+            }
+            @Override
+            public void remove(){
+                //System.out.println("called");
+                if(!hasIterated){
+                    throw new IllegalStateException("");
+                }
+                //if(node != null){
+                    if(previous == null) {
+                        head = head.next;
+                        //System.out.println("route a");
+                    }
+                    if(previous.next == null && previousSquared != null){
+                        //System.out.println("route nullnext");
+                        previousSquared.next = null;
+                    }
+                    else {
+                        //System.out.println("hit else");
+                        if(previousSquared != null){
+                            //System.out.println("route b");
+                            previousSquared.next = previous.next;
+                            previous.next = node.next;
+                        }
+                        else if(previousSquared == null){
+                            //System.out.println("route c");
+                            head = node;
+                        }
+                        else{
+                            //System.out.println("route d");
+                        }
+                        previous = null;
+                    }
+                //}
+                hasIterated = false;
             }
         };
     }
@@ -162,12 +235,20 @@ public class DoubleLinkedList<E> {
     }
 
     public E get(int index){
+        if(index < 0 || index > size - 1){
+            throw new IndexOutOfBoundsException("" + index);
+        }
         E data = null;
         Node<E> temp = head;
         for (int i = 0; i < index - 1; i++) {
             temp = temp.next;
         }
-        data = temp.next.data;
+        if(size == 1){
+            data = temp.data;
+        }
+        else{
+            data = temp.next.data;
+        }
         return data;
     }
 
