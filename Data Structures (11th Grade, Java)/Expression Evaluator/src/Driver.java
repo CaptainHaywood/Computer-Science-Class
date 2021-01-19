@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class Driver {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Supported: ADD, SUB, MULT, DIV");
+        System.out.println("Supported Operators: ADD, SUB, MULT, DIV, PAREN");
         System.out.print("(I)nfix/(P)ostfix? ");
         String type = in.nextLine();
-        type.toUpperCase();
+        type = type.toUpperCase();
         System.out.println("Expression? ");
         String expression = in.nextLine();
-        if(type == "I"){
-            System.out.println(PostfixEvaluator.calculateAnswer(InfixConverter.convertInfix(expression)));
+        if(type.equals("I")){
+            System.out.println(InfixEvaluator.getAnswer(expression));
         }
-        else if(type == "P"){
+        else if(type.equals("P")){
             System.out.println(PostfixEvaluator.calculateAnswer(expression));
         }
     }
