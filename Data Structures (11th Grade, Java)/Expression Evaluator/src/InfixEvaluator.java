@@ -26,7 +26,7 @@ public class InfixEvaluator {
                     operatorStack.push(tokens[i]);
                 }
                 else if(getPrecedence(tokens[i]) <= getPrecedence(operatorStack.peek())){
-                    while(!operatorStack.empty()){
+                    while(!operatorStack.empty() && getPrecedence(operatorStack.peek()) >= getPrecedence(tokens[i])){
                         postfix = postfix + operatorStack.pop() + " ";
                     }
                     operatorStack.push(tokens[i]);
